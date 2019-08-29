@@ -1,47 +1,178 @@
+#include<stdio.h
+>
+#include<stdlib.h>
 
-// CPP code to print maximum edges such that 
-// Tree remains a Bipartite graph 
-#include <bits/stdc++.h> 
-using namespace std; 
+ 
+struct node
+{
+   
+ struct node *prev;
   
-// To store counts of nodes with two colors 
-long long count_color[2]; 
+  int data;
+    
+struct node *next;
+}*first=NULL;
+ 
+
+
+void create(int a[],int x)
+
+{
+    
+struct node *t,*last=NULL;
+   
+ first=(struct node *)malloc(sizeof(struct node));
+   
+ first->data=a[0];
   
-void dfs(vector<int> adj[], int node, int parent, int color) 
-{ 
-    // Increment count of nodes with current 
-    // color 
-    count_color[color]++; 
+  first->prev=NULL;
   
-    // Traversing adjacent nodes 
-    for (int i = 0; i < adj[node].size(); i++) { 
+  first->next=NULL;
+   
+ last=first;
+ 
+    
+for(int i=1;i<x;i++)
+   
+ {
+        
+t=(struct node*)malloc(sizeof(struct node));
+   
+     t->data=a[i];
+       
+ t->next=NULL;
+        
+last->next=t;
+      
+  t->prev=last;
+    
+    last=t;
+    
+}
+
+
+}
+ 
+
+
+void deletefriend(struct node *p,int k)
+
+{
+    
+struct node *q=NULL;
+    
+int i=0;
+   
+ q=p->next;
+   
+ while(p&&i<k)
   
-        // Not recurring for the parent node 
-        if (adj[node][i] != parent) 
-            dfs(adj, adj[node][i], node, !color); 
-    } 
-} 
+  {
+        
+if(p&&p->data<q->data)
+      
+  {
+ 
+           
+ if(p!=first)
+              
+  {
+              
+  p->prev->next=p->next;
+            
+    p->next->prev=p->prev;
+               
+ p=p->prev;
+               
+ i++;
+               
+ }
+           
+ else
+           
+ {
+               
+ first=first->next;
+              
+  q=q->next;
+               
+ p=p->next;
+                
+i++;
+           
+}
+ 
+       
+ }
+       
+ else
+{
+   
+ p=p->next;
+      
+      q=q->next;
+   
+     
+}
+    
+}
+
+}
+
+
+ 
+void display(struct node *p)
+
+{
+   
+ while(p)
+    
+{
+        
+printf("%d ",p->data);
   
-// Finds maximum number of edges that can be added 
-// without violating Bipartite property. 
-int findMaxEdges(vector<int> adj[], int n) 
-{ 
-    // Do a DFS to count number of nodes 
-    // of each color 
-    dfs(adj, 1, 0, 0); 
+      p=p->next;
+   
+ }
+
+}
+ 
+ 
+
+
+void main()
+
+{
+   
+ int t;
+    
+scanf("%d",&t);
   
-    return count_color[0] * count_color[1] - (n - 1); 
-} 
-  
-// Driver code 
-int main() 
-{ 
-    int n = 5; 
-    vector<int> adj[n + 1]; 
-    adj[1].push_back(2); 
-    adj[1].push_back(3); 
-    adj[2].push_back(4); 
-    adj[3].push_back(5); 
-    cout << findMaxEdges(adj, n); 
-    return 0; 
-} 
+  while(t)
+   
+ {
+        
+int n,k;
+     
+   scanf("%d%d",&n,&k);
+      
+  int a[n];
+     
+   for(int i=0;i<n;i++)
+     
+       scanf("%d",&a[i]);
+       
+ create(a,n);
+    
+    deletefriend(first,k);
+    
+    display(first);
+     
+   printf("\n");
+     
+   t--;
+    
+}
+
+ 
+}
