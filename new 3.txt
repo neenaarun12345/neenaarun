@@ -1,0 +1,29 @@
+You have been given an Unimodal function:
+with N intervals. For each interval you will be given two integer values l and r , where and you need to find the minimum value of where x will be in the range (both inclusive).
+
+#include <stdio.h>
+
+int main()
+{
+int n,i;
+long int l,r,j,k,min;
+
+scanf("%d",&n);
+for (int i = 0; i < n; ++i)
+{
+scanf("%ld %ld",&l,&r);
+for (int j =l ; j <=r; ++j)
+{
+k=2*j*j-12*j+7;
+if (j==l)
+{min=k;}
+if (k<min)
+{
+min=k;
+}
+}
+printf("%ld\n",min);
+
+}
+return 0;
+}
