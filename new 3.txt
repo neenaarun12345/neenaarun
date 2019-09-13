@@ -1,5 +1,6 @@
 You have been given an Unimodal function:
-with N intervals. For each interval you will be given two integer values l and r , where and you need to find the minimum value of where x will be in the range (both inclusive).
+f(x)=2x^2-12x+7
+with N intervals. For each interval you will be given two integer values l and r , where l<=r and you need to find the minimum value of f(x) where x will be in the range(l,r) (both inclusive).
 
 #include <stdio.h>
 
