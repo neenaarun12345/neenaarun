@@ -1,0 +1,30 @@
+
+You have been given an array A of size N . you need to sort this array non-decreasing oder using bubble sort. However, you do not need to print the sorted array . You just need to print the number of swaps required to sort this array using bubble sort
+#include <stdio.h>
+int main()
+{
+int n; //value of n
+scanf("%d",&n);
+int arr[n]; //array
+int i;
+
+for(i=0;i<n;i++){
+scanf("%d",&arr[i]);
+}
+
+int j,k,count=0; //sorting begins
+for(j=0;j<n-1;j++){
+for(k=0;k<i-j-1;k++){
+if(arr[k]>arr[k+1]){
+int temp,a;
+temp=arr[k];
+arr[k]=arr[k+1];
+arr[k+1]=temp;
+count++;
+}
+}
+}
+printf("%d\n",count);
+
+return 0;
+}
