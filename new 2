@@ -1,0 +1,27 @@
+You have been given an array of size N consisting of integers. In addition you have been given an element M you need to find and print the index of the last occurrence of this element M in the array if it exists in it, otherwise print -1. Consider this array to be 1 indexed.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int N;
+int Number;
+int ind=-1;
+cin >>N;
+int current_Num;
+
+cin >> Number;
+for (int i=0;i<N;i++)
+{
+cin>>current_Num;
+// chech here for the given number
+if(current_Num==Number)
+{
+ind=i;
+}
+}
+cout<<ind+1;
+
+return 0;
+}
