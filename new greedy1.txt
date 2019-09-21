@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+long int a[1000001];
+int test,n,i,j;
+long int k;
+cin>>test;
+while(test--)
+{
+cin>>n>>k;
+for(i=0;i<n;i++)
+{
+cin>>a[i];
+}
+for(i=0;i<n;i++)
+{
+for(j=i;j<n;j++)
+{
+if(a[j]<a[i])
+{
+int temp=a[i];
+a[i]=a[j];
+a[j]=temp;
+}
+}
+
+}
+i=0;
+int	sum=0;
+while(sum<=k)
+{
+
+sum=sum+a[i];
+i++;
+}
+cout<<i-1<<endl;
+}
+return 0;
+}
