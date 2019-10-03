@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+#define long  int
+
+ll fact[1000007]={0};
+
+void factorial()
+{
+fact[0]=1;
+fact[1]=1;
+
+for(int i=2;i<1000007;++i)
+{
+fact[i] = (1LL*i*fact[i-1])%1000000007;
+}
+
+}
+int main()
+{
+int t;
+cin>>t;
+factorial();
+
+while(t--)
+{
+int n;
+cin>>n;
+cout<<fact[n]<<endl;
+}
+return 0;
+}
